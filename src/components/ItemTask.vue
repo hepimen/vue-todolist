@@ -4,9 +4,9 @@
       <input
         class="form-check-input"
         type="checkbox"
-        value=""
+        value=":value"
         id="defaultCheck1"
-        onclick=""
+        v-on:click="confirmTrue"
       />
       <label
         class="form-check-label item"
@@ -23,8 +23,17 @@
 export default {
   name: "myTask",
   props: ["myTask"],
+  methods: {
+    confirmTrue() {
+      console.info("bisa");
+      this.mytask.isDone = true;
+    },
+  },
 };
 </script>
 
-<style scoped>
+<style>
+.item-completed {
+  color: rgb(8, 180, 8);
+}
 </style>
