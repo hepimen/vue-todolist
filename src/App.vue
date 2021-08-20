@@ -15,7 +15,7 @@
                 v-bind:key="myTask.id"
                 class="task mb-3"
               >
-                <ItemTask v-bind:myTask="myTask" />
+                <ItemTask v-bind:myTask="myTask" @confirmTrue="confirmTrue" />
               </div>
             </div>
           </div>
@@ -35,22 +35,22 @@ export default {
     return {
       task: [
         {
-          id: 1,
+          id: 0,
           taskName: "Membersihkan Kamar",
           isDone: false,
         },
         {
-          id: 2,
+          id: 1,
           taskName: "Memanggang Daging",
           isDone: false,
         },
         {
-          id: 3,
+          id: 2,
           taskName: "Lari Pagi",
           isDone: false,
         },
         {
-          id: 4,
+          id: 3,
           taskName: "Istirahat cukup",
           isDone: false,
         },
@@ -59,6 +59,11 @@ export default {
   },
   components: {
     ItemTask,
+  },
+  methods: {
+    confirmTrue(id) {
+      this.task[id].isDone = !this.task[id].isDone;
+    },
   },
 };
 </script>
@@ -74,15 +79,13 @@ export default {
 }
 
 .header {
-  background: rgba(125, 162, 197, 0.8);
+  background: #c0392b;
+  color: #fff;
 }
 .task .item {
   font-size: 20px;
 }
 .task-home {
   text-align: left;
-}
-.item-completed {
-  color: rgb(8, 180, 8);
 }
 </style>

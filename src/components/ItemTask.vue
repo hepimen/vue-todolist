@@ -1,12 +1,12 @@
 <template>
-  <div>
+  <div class="item-task">
     <div class="form-check">
       <input
         class="form-check-input"
         type="checkbox"
         value=":value"
         id="defaultCheck1"
-        v-on:click="confirmTrue"
+        v-on:click="$emit('confirmTrue', myTask.id)"
       />
       <label
         class="form-check-label item"
@@ -16,6 +16,7 @@
         {{ myTask.taskName }}
       </label>
     </div>
+    <!-- <button v-on:click="$emit('add-user')">Submit</button> -->
   </div>
 </template>
 
@@ -23,17 +24,11 @@
 export default {
   name: "myTask",
   props: ["myTask"],
-  methods: {
-    confirmTrue() {
-      console.info("bisa");
-      this.mytask.isDone = true;
-    },
-  },
 };
 </script>
 
 <style>
 .item-completed {
-  color: rgb(8, 180, 8);
+  color: #e74c3c;
 }
 </style>
